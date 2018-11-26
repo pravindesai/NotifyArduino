@@ -124,10 +124,16 @@ public class MainActivity extends AppCompatActivity {
          List.add(Msg);
          Adapter.notifyDataSetChanged();
 
-            try {
-                sendAppData();
-            } catch (IOException e) {
-                e.printStackTrace();
+            if(mBluetoothAdapter.isEnabled())
+            {
+                try {
+                    sendAppData();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+
             }
         }
     };
