@@ -72,17 +72,25 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
+         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    sendData();
-                    editText.setText("");
-                } catch (IOException e) {
-                    e.printStackTrace();
+                if(mBluetoothAdapter.isEnabled())
+                {
+                    try {
+                        sendData();
+                        editText.setText("");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+                else{
+                    Toast.makeText(MainActivity.this,"No bluetooth Connected",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+        
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
